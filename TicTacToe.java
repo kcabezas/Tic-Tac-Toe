@@ -9,6 +9,10 @@ public class TicTacToe {
 	private String player2Mark;
 	private String[][] board;
 	
+	/**
+	 * Constructor for game
+	 * @param player1Mark Player 1's mark. Will be either "X" or "O".
+	 */
 	public TicTacToe(String player1Mark) {
 		this.player1Mark = player1Mark;
 		if (player1Mark.equals("X")) {
@@ -24,29 +28,11 @@ public class TicTacToe {
 		}
 	}
 	
-	public boolean checkTie() {
-		for (int row = 0; row < board.length; row++) {
-			for (int col = 0; col < board[row].length; col++) {
-				if (board[row][col].equals(" ")) {
-					return false;
-				}
-			}
-		}
-		if (checkWin()) {
-			return false;
-		}
-		System.out.println("\n** IT'S A TIE. None of you guys won lol. **");
-		printBoard();
-		return true;
-	}
-	
-	public boolean checkWin() {
-		for (int row = 0; row < board.length; row++) {
-			
-		}
-		return false;
-	}
-	
+	/**
+	 * Method to execute Player 1's turn. Allows Player 1 to choose
+	 * where on the board to put his/her mark.
+	 * @param in Scanner object used to take in input
+	 */
 	public void player1Turn(Scanner in) {
 		System.out.println("\n** Player 1's turn! **");
 		printBoard();
@@ -64,6 +50,11 @@ public class TicTacToe {
 		board[row - 1][col - 1] = player1Mark;
 	}
 	
+	/**
+	 * Method to execute Player 2's turn. Allows Player 2 to choose
+	 * where on the board to put his/her mark.
+	 * @param in Scanner object used to take in input
+	 */
 	public void player2Turn(Scanner in) {
 		System.out.println("\n** Player 2's turn! **");
 		printBoard();
@@ -81,6 +72,14 @@ public class TicTacToe {
 		board[row - 1][col - 1] = player2Mark;
 	}
 	
+	/**
+	 * Method to determine if the space on the board at the entered
+	 * row and column is empty or not.
+	 * @param row Row of the space on the board
+	 * @param col Column of the space on the board
+	 * @return true if the space is empty
+	 * 		   false if it is not empty
+	 */
 	public boolean isEmptySpace(int row, int col) {
 		if (board[row][col].equals(" ")) {
 			return true;
@@ -88,6 +87,56 @@ public class TicTacToe {
 		return false;
 	}
 	
+	/**
+	 * Method to check if the game ended in a tie- meaning, all the
+	 * spaces on the board are filled and there are no instances
+	 * where there are three of the same mark in a row.
+	 * @return false if there are still empty spaces on the board, or
+	 *               if there are three of the same mark in a row
+	 *         true if otherwise
+	 */
+	public boolean checkTie() {
+		for (int row = 0; row < board.length; row++) {
+			for (int col = 0; col < board[row].length; col++) {
+				if (board[row][col].equals(" ")) {
+					return false;
+				}
+			}
+		}
+		if (checkWin()) {
+			return false;
+		}
+		System.out.println("\n** IT'S A TIE. None of you guys won lol. **");
+		printBoard();
+		return true;
+	}
+	
+	/**
+	 * Method to check if there are three of the same mark in a row
+	 * @return true if there are three of the same mark in a row
+	 * 		   false if otherwise
+	 */
+	public boolean checkWin() {
+//		for (int row = 0; row < board.length; row++) {
+//			for
+//		}
+		return false;
+	}
+	
+	/**
+	 * Private helper method to check if there are three of the same
+	 * mark in a diagonal row.
+	 * @param mark Mark to check
+	 * @return true if there are three of the same mark in a diagonal row
+	 * 		   false if otherwise
+	 */
+	private boolean diagonalWin(String mark) {
+		return false;
+	}
+	
+	/**
+	 * Method to print the board
+	 */
 	public void printBoard() {
 		System.out.println("     1   2   3");
 		System.out.println("   -------------");
